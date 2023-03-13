@@ -1,8 +1,6 @@
 /**
- *  This class is the main class of the "World of Zuul" application. 
- *  "World of Zuul" is a very simple, text based adventure game.  Users 
- *  can walk around some scenery. That's all. It should really be extended 
- *  to make it more interesting!
+ *  This class is the main class of my text adventure game. For now,
+ *  players can simply walk around and explore the RVCC campus.
  * 
  *  To play this game, create an instance of this class and call the "play"
  *  method.
@@ -11,8 +9,8 @@
  *  rooms, creates the parser and starts the game.  It also evaluates and
  *  executes the commands that the parser returns.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  Max Romano
+ * @version 2023.03.13
  */
 
 public class Game 
@@ -34,14 +32,31 @@ public class Game
      */
     private void createRooms()
     {
-        Room outside, theater, pub, lab, office;
+        Room mainEntrance, artsCenter, batemanStudentCenter,
+                childrensCampus, collegeCenter, courtyard, eastBuilding,
+                eventCenter, hunterdonHall, library, physicalEducation,
+                planetarium, scienceCenter, somersetHall, theatre,
+                westBuilding, workforceBldg;
       
         // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        mainEntrance = new Room("outside the main entrance to the "
+                                    + "college");
+        artsCenter = new Room("in the center for arts students");
+        batemanStudentCenter = new Room("in the Bateman Student Center");
+        childrensCampus = new Room("in the Children's Campus");
+        collegeCenter = new Room("in the College Center");
+        courtyard = new Room("in the courtyard");
+        eastBuilding = new Room("in the East Building");
+        eventCenter = new Room("in the Event Center");
+        hunterdonHall = new Room("in Hunterdon Hall");
+        library = new Room("in the Evelyn S. Field Library");
+        physicalEducation = new Room("in the Physical Education complex");
+        planetarium = new Room("in the Planetarium");
+        scienceCenter = new Room("in the Whitman Science Center");
+        somersetHall = new Room("in Somerset Hall");
+        theatre = new Room("in the Theatre");
+        westBuilding = new Room("in the West Building");
+        workforceBldg = new Room("in the Workforce Training Center");
         
         // initialise room exits
         outside.setExit("east", theater);
