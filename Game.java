@@ -166,6 +166,16 @@ public class Game
         // create and initialize the player
         player = new Player();
         player.updateRoom(mainEntrance);
+        
+        // create and add NPCs
+        NPC greg, linda;
+        
+        greg = new NPC("Greg", "Welcome to RVCC!");
+        linda = new NPC("Linda", "They use a lot of computers in the WEST"
+                        + " Building.");
+                        
+        mainEntrance.addNPC(greg);
+        collegeCenter.addNPC(linda);
     }
 
     /**
@@ -241,6 +251,10 @@ public class Game
                 
             case DROP:
                 drop(command);
+                break;
+                
+            case TALK:
+                talk();
                 break;
 
             case QUIT:
@@ -408,5 +422,19 @@ public class Game
         
         String itemString = command.getSecondWord();
         player.dropItem(itemString);
+    }
+    
+    /**
+     * Talks to an NPC.
+     */
+    private void talk()
+    {
+        if (currentRoom.getNPC() == null)
+        {
+            System.out.println("There is no one to talk to.");
+            return;
+        }
+        
+        currentRoom.getNPC().sayVoiceline();
     }
 }

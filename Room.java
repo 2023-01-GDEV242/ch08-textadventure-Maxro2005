@@ -6,15 +6,14 @@ import java.util.ArrayList;
 /**
  * Class Room - a room in an adventure game.
  *
- * This class is part of the "World of Zuul" application. 
- * "World of Zuul" is a very simple, text based adventure game.  
- *
  * A "Room" represents one location in the scenery of the game.  It is 
  * connected to other rooms via exits.  For each existing exit, the room 
  * stores a reference to the neighboring room.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * Each room can also contain items and/or NPCs.
+ * 
+ * @author Max Romano
+ * @version 2023.03.20
  */
 
 public class Room 
@@ -23,6 +22,7 @@ public class Room
     private HashMap<String, Room> exits;        // stores exits of this room.
     private HashMap<String, Item> itemMap;
     private ArrayList<Item> items;
+    private NPC npc;
     
     /**
      * Create a room described "description". Initially, it has
@@ -39,6 +39,15 @@ public class Room
     }
 
     /**
+     * Accessor method for NPC.
+     * @return NPC.
+     */
+    public NPC getNPC()
+    {
+        return npc;
+    }
+    
+    /**
      * Define an exit from this room.
      * @param direction The direction of the exit.
      * @param neighbor  The room to which the exit leads.
@@ -50,14 +59,23 @@ public class Room
     
     /**
      * Adds an item to a room.
-     * @param item The item to be added.
+     * @param item the item to be added.
      */
     public void addItem(Item item)
     {
         itemMap.put(item.getString(), item);
         items.add(item);
     }
-
+    
+    /**
+     * Adds an NPC to a room.
+     * @param npc the NPC to be added.
+     */
+    public void addNPC(NPC npc)
+    {
+        this.npc = npc;
+    }
+    
     /**
      * @return The short description of the room
      * (the one that was defined in the constructor).
@@ -79,7 +97,10 @@ public class Room
         "You are " + description + ".\n" + getExitString();
         for (Item item : items)
             longDescription = longDescription + "\n"
-            + item.getLongDescription();
+                                + item.getLongDescription();
+        if (npc != null)
+            longDescription = longDescription + "\nNPC: "
+                                + npc.getName();
         return longDescription;
     }
 
