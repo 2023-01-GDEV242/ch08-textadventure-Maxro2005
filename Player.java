@@ -24,11 +24,20 @@ public class Player
 
     /**
      * Accessor method for inventory.
-     * @return inventory
+     * @return inventory.
      */
     public ArrayList<Item> getInventory()
     {
         return inventory;
+    }
+    
+    /**
+     * Accessor method for carry capacity.
+     * @return carry capacity.
+     */
+    public int getCarryCapacity()
+    {
+        return carryCapacity;
     }
     
     /**
@@ -56,6 +65,8 @@ public class Player
     public void takeItem(Item item)
     {
         inventory.add(item);
+        int weightIncrease = item.getWeight() * -1;
+        updateCarryCapacity(weightIncrease);
     }
     
     public void dropItem(String itemString)
@@ -72,6 +83,7 @@ public class Player
         }
         else {
             currentRoom.addItem(item);
+            updateCarryCapacity(item.getWeight());
             inventory.remove(item);
             System.out.println("Item dropped.");
         }

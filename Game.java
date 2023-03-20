@@ -383,9 +383,15 @@ public class Game
             System.out.println("That is not an available item.");
         }
         else {
-            player.takeItem(item);
-            currentRoom.removeItem(item);
-            System.out.println("Item taken.");
+            if (item.getWeight() > player.getCarryCapacity())
+                System.out.println("Item is too heavy. Drop an item or eat"
+                                    + " to be able to take it.");
+            else
+            {
+                player.takeItem(item);
+                currentRoom.removeItem(item);
+                System.out.println("Item taken.");
+            }
         }
     }
     
