@@ -182,6 +182,10 @@ public class Game
             case LOOK:
                 look();
                 break;
+                
+            case EAT:
+                eat();
+                break;
 
             case QUIT:
                 wantToQuit = quit(command);
@@ -261,5 +265,11 @@ public class Game
     private void look()
     {
         System.out.println(currentRoom.getLongDescription());
+    }
+    
+    private void eat()
+    {
+        System.out.println("You have eaten now and you are not hungry " +
+        "any more.");
     }
 }
