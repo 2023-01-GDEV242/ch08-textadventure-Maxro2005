@@ -148,8 +148,8 @@ public class Game
     private void printWelcome()
     {
         System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+        System.out.println("Welcome to the RVCC Campus!");
+        System.out.println("RVCC is your local community college.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
@@ -177,6 +177,10 @@ public class Game
 
             case GO:
                 goRoom(command);
+                break;
+                
+            case LOOK:
+                look();
                 break;
 
             case QUIT:
@@ -248,5 +252,14 @@ public class Game
     {
         Game game = new Game();
         game.play();
+    }
+    
+    /**
+     * Prints out the description of the room and the exits again (like
+     * looking around the room).
+     */
+    private void look()
+    {
+        System.out.println(currentRoom.getLongDescription());
     }
 }
