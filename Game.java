@@ -141,17 +141,19 @@ public class Game
         makeup = new Item("a makeup set", 10);
         
         // initialize room items
-        artsCenter.setItem(paintbrush);
-        batemanStudentCenter.setItem(cheatSheet);
-        courtyard.setItem(dandelion);
-        eventCenter.setItem(goodieBag);
-        hunterdonHall.setItem(mask);
-        library.setItem(book);
-        physicalEducation.setItem(dumbbell);
-        scienceCenter.setItem(safetyGoggles);
-        somersetHall.setItem(essay);
-        westBuilding.setItem(computer);
-        workforceBldg.setItem(makeup);
+        artsCenter.addItem(paintbrush);
+        batemanStudentCenter.addItem(cheatSheet);
+        courtyard.addItem(dandelion);
+        eventCenter.addItem(goodieBag);
+        hunterdonHall.addItem(mask);
+        library.addItem(book);
+        physicalEducation.addItem(dumbbell);
+        scienceCenter.addItem(safetyGoggles);
+        somersetHall.addItem(essay);
+        somersetHall.addItem(book);
+        westBuilding.addItem(computer);
+        westBuilding.addItem(cheatSheet);
+        workforceBldg.addItem(makeup);
     }
 
     /**
