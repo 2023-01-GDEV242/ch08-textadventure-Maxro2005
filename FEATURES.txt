@@ -1,0 +1,12 @@
+B Level Elements:
+- Added items
+- Allowed rooms to hold multiple items
+- Implemented back command
+
+A Level Elements:
+- One way trapdoor
+- Eat changes game state
+- NPCs
+
+Extra Credit:
+- Added Player class
