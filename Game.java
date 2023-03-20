@@ -59,20 +59,69 @@ public class Game
         workforceBldg = new Room("in the Workforce Training Center");
         
         // initialise room exits
-        outside.setExit("east", theater);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
+        mainEntrance.setExit("north", somersetHall);
+        mainEntrance.setExit("east", eventCenter);
+        mainEntrance.setExit("west", theatre);
 
-        theater.setExit("west", outside);
+        artsCenter.setExit("north", childrensCampus);
+        artsCenter.setExit("south", batemanStudentCenter);
+        
+        batemanStudentCenter.setExit("north", artsCenter);
+        batemanStudentCenter.setExit("south", physicalEducation);
+        
+        childrensCampus.setExit("south", artsCenter);
+        
+        collegeCenter.setExit("east", hunterdonHall);
+        collegeCenter.setExit("south", courtyard);
+        collegeCenter.setExit("west", physicalEducation);
+        
+        courtyard.setExit("north", collegeCenter);
+        courtyard.setExit("east", eastBuilding);
+        courtyard.setExit("south", library);
+        
+        eastBuilding.setExit("north", hunterdonHall);
+        eastBuilding.setExit("south", planetarium);
+        eastBuilding.setExit("west", courtyard);
+        
+        eventCenter.setExit("north", somersetHall);
+        eventCenter.setExit("west", mainEntrance);
+        
+        hunterdonHall.setExit("south", eastBuilding);
+        hunterdonHall.setExit("west", collegeCenter);
+        
+        library.setExit("north", courtyard);
+        library.setExit("east", somersetHall);
+        library.setExit("south", theatre);
+        library.setExit("west", westBuilding);
+        
+        physicalEducation.setExit("north", batemanStudentCenter);
+        physicalEducation.setExit("east", collegeCenter);
+        physicalEducation.setExit("south", westBuilding);
+        physicalEducation.setExit("west", scienceCenter);
+        
+        planetarium.setExit("north", eastBuilding);
+        planetarium.setExit("west", somersetHall);
+        
+        scienceCenter.setExit("east", physicalEducation);
+        scienceCenter.setExit("south", westBuilding);
+        scienceCenter.setExit("west", workforceBldg);
+        
+        somersetHall.setExit("north", courtyard);
+        somersetHall.setExit("east", planetarium);
+        somersetHall.setExit("south", mainEntrance);
+        somersetHall.setExit("west", library);
+        
+        theatre.setExit("north", library);
+        theatre.setExit("east", mainEntrance);
+        theatre.setExit("west", westBuilding);
+        
+        westBuilding.setExit("north", scienceCenter);
+        westBuilding.setExit("east", physicalEducation);
+        westBuilding.setExit("west", workforceBldg);
+        
+        workforceBldg.setExit("east", westBuilding);
 
-        pub.setExit("east", outside);
-
-        lab.setExit("north", outside);
-        lab.setExit("east", office);
-
-        office.setExit("west", lab);
-
-        currentRoom = outside;  // start game outside
+        currentRoom = mainEntrance;  // start game outside
     }
 
     /**
@@ -193,5 +242,11 @@ public class Game
         else {
             return true;  // signal that we want to quit
         }
+    }
+    
+    public static void main(String[] args)
+    {
+        Game game = new Game();
+        game.play();
     }
 }
