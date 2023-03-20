@@ -23,6 +23,15 @@ public class Player
     }
 
     /**
+     * Accessor method for inventory.
+     * @return inventory
+     */
+    public ArrayList<Item> getInventory()
+    {
+        return inventory;
+    }
+    
+    /**
      * Updates the current room of the player.
      * @param newRoom the current room.
      */
@@ -38,5 +47,33 @@ public class Player
     public void updateCarryCapacity(int change)
     {
         carryCapacity += change;
+    }
+    
+    /**
+     * Takes an item from the current room.
+     * @param item the item to be taken.
+     */
+    public void takeItem(Item item)
+    {
+        inventory.add(item);
+    }
+    
+    public void dropItem(String itemString)
+    {
+        Item item = null;
+        for (Item items : inventory)
+        {
+            if (itemString.equals(items.getString()))
+                item = items;
+        }
+
+        if (item == null) {
+            System.out.println("You do not have that item.");
+        }
+        else {
+            currentRoom.addItem(item);
+            inventory.remove(item);
+            System.out.println("Item dropped.");
+        }
     }
 }

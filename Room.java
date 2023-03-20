@@ -21,6 +21,7 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> exits;        // stores exits of this room.
+    private HashMap<String, Item> itemMap;
     private ArrayList<Item> items;
     
     /**
@@ -33,6 +34,7 @@ public class Room
     {
         this.description = description;
         exits = new HashMap<>();
+        itemMap = new HashMap<>();
         items = new ArrayList<>();
     }
 
@@ -52,6 +54,7 @@ public class Room
      */
     public void addItem(Item item)
     {
+        itemMap.put(item.getString(), item);
         items.add(item);
     }
 
@@ -104,6 +107,23 @@ public class Room
     public Room getExit(String direction) 
     {
         return exits.get(direction);
+    }
+    
+    /**
+     * Return the item that the player is trying to take. If there is no
+     * item with that itemString, return null.
+     * @param itemString the item's string.
+     * @return the item taken.
+     */
+    public Item getItem(String itemString)
+    {
+        return itemMap.get(itemString);
+    }
+    
+    public void removeItem(Item item)
+    {
+        itemMap.remove(item.getString());
+        items.remove(item);
     }
 }
 

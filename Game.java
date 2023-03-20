@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  *  This class is the main class of my text adventure game. For now,
  *  players can simply walk around and explore the RVCC campus.
@@ -131,17 +133,20 @@ public class Game
         Item paintbrush, cheatSheet, dandelion, goodieBag, mask, book,
         dumbbell, safetyGoggles, essay, computer, makeup;
         
-        paintbrush = new Item("a paintbrush", 3);
-        cheatSheet = new Item("a notes sheet for some math class", 3);
-        dandelion = new Item("a dandelion", 1);
-        goodieBag = new Item("a goodie bag from an on-campus event", 10);
-        mask = new Item("a nursing mask", 3);
-        book = new Item("a book titled 'A Tale of Two Cities'", 20);
-        dumbbell = new Item("a 25-pound dumbbell", 25);
-        safetyGoggles = new Item("a pair of safety goggles from a lab", 5);
-        essay = new Item("an essay from an English class", 5);
-        computer = new Item("a computer", 40);
-        makeup = new Item("a makeup set", 10);
+        paintbrush = new Item("a paintbrush", 3, "paintbrush");
+        cheatSheet = new Item("a notes sheet for some math class", 3,
+                                "cheatSheet");
+        dandelion = new Item("a dandelion", 1, "dandelion");
+        goodieBag = new Item("a goodie bag from an on-campus event", 10,
+                                "goodieBag");
+        mask = new Item("a nursing mask", 3, "mask");
+        book = new Item("a book titled 'A Tale of Two Cities'", 20, "book");
+        dumbbell = new Item("a 25-pound dumbbell", 25, "dumbbell");
+        safetyGoggles = new Item("a pair of safety goggles from a lab", 5,
+                                    "safetyGoggles");
+        essay = new Item("an essay from an English class", 5, "essay");
+        computer = new Item("a computer", 40, "computer");
+        makeup = new Item("a makeup set", 10, "makeup");
         
         // initialize room items
         artsCenter.addItem(paintbrush);
@@ -228,6 +233,14 @@ public class Game
                 
             case BACK:
                 back(command);
+                break;
+                
+            case TAKE:
+                take(command);
+                break;
+                
+            case DROP:
+                drop(command);
                 break;
 
             case QUIT:
@@ -348,5 +361,46 @@ public class Game
                 System.out.println(currentRoom.getLongDescription());
             }
         }
+    }
+    
+    /**
+     * Takes an item from the room.
+     */
+    private void take(Command command)
+    {
+        if (!command.hasSecondWord())
+        {
+            System.out.println("Take what?");
+            return;
+        }
+        
+        String itemString = command.getSecondWord();
+
+        // Try to take the item.
+        Item item = currentRoom.getItem(itemString);
+
+        if (item == null) {
+            System.out.println("That is not an available item.");
+        }
+        else {
+            player.takeItem(item);
+            currentRoom.removeItem(item);
+            System.out.println("Item taken.");
+        }
+    }
+    
+    /**
+     * Drops an item into the room.
+     */
+    private void drop(Command command)
+    {
+        if (!command.hasSecondWord())
+        {
+            System.out.println("Drop what?");
+            return;
+        }
+        
+        String itemString = command.getSecondWord();
+        player.dropItem(itemString);
     }
 }

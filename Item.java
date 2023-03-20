@@ -10,15 +10,17 @@ public class Item
     // instance variables - replace the example below with your own
     private String description;
     private int weight;
+    private String itemString;
 
     /**
      * Constructor for objects of class Item
      */
-    public Item(String description, int weight)
+    public Item(String description, int weight, String itemString)
     {
         // initialise instance variables
         this.description = description;
         this.weight = weight;
+        this.itemString = itemString;
     }
 
     /**
@@ -45,6 +47,11 @@ public class Item
      */
     public String getLongDescription()
     {
-        return "There is " + description + ".";
+        return "There is " + description + " (" + getString() + ").";
+    }
+    
+    public String getString()
+    {
+        return itemString;
     }
 }
