@@ -59,7 +59,7 @@ public class Game
         westBuilding = new Room("in the West Building");
         workforceBldg = new Room("in the Workforce Training Center");
         
-        // initialise room exits
+        // initialize room exits
         mainEntrance.setExit("north", somersetHall);
         mainEntrance.setExit("east", eventCenter);
         mainEntrance.setExit("west", theatre);
@@ -123,6 +123,35 @@ public class Game
         workforceBldg.setExit("east", westBuilding);
 
         currentRoom = mainEntrance;  // start game outside
+        
+        // create the items
+        Item paintbrush, cheatSheet, dandelion, goodieBag, mask, book,
+        dumbbell, safetyGoggles, essay, computer, makeup;
+        
+        paintbrush = new Item("a paintbrush", 3);
+        cheatSheet = new Item("a notes sheet for some math class", 3);
+        dandelion = new Item("a dandelion", 1);
+        goodieBag = new Item("a goodie bag from an on-campus event", 10);
+        mask = new Item("a nursing mask", 3);
+        book = new Item("a book titled 'A Tale of Two Cities'", 20);
+        dumbbell = new Item("a 25-pound dumbbell", 25);
+        safetyGoggles = new Item("a pair of safety goggles from a lab", 5);
+        essay = new Item("an essay from an English class", 5);
+        computer = new Item("a computer", 40);
+        makeup = new Item("a makeup set", 10);
+        
+        // initialize room items
+        artsCenter.setItem(paintbrush);
+        batemanStudentCenter.setItem(cheatSheet);
+        courtyard.setItem(dandelion);
+        eventCenter.setItem(goodieBag);
+        hunterdonHall.setItem(mask);
+        library.setItem(book);
+        physicalEducation.setItem(dumbbell);
+        scienceCenter.setItem(safetyGoggles);
+        somersetHall.setItem(essay);
+        westBuilding.setItem(computer);
+        workforceBldg.setItem(makeup);
     }
 
     /**
@@ -283,6 +312,9 @@ public class Game
         "any more.");
     }
     
+    /**
+     * Takes the player into the previous room they were in.
+     */
     private void back(Command command)
     {
         if(command.hasSecondWord())
