@@ -37,7 +37,7 @@ public class Game
                 childrensCampus, collegeCenter, courtyard, eastBuilding,
                 eventCenter, hunterdonHall, library, physicalEducation,
                 planetarium, scienceCenter, somersetHall, theatre,
-                westBuilding, workforceBldg;
+                westBuilding, workforceBldg, trapdoor;
       
         // create the rooms
         mainEntrance = new Room("outside the main entrance to the "
@@ -58,6 +58,7 @@ public class Game
         theatre = new Room("in the Theatre");
         westBuilding = new Room("in the West Building");
         workforceBldg = new Room("in the Workforce Training Center");
+        trapdoor = new Room("trapped. Game over");
         
         // initialize room exits
         mainEntrance.setExit("north", somersetHall);
@@ -121,6 +122,7 @@ public class Game
         westBuilding.setExit("west", workforceBldg);
         
         workforceBldg.setExit("east", westBuilding);
+        workforceBldg.setExit("west", trapdoor);
 
         currentRoom = mainEntrance;  // start game outside
         
