@@ -17,6 +17,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
+    private Room previousRoom;
         
     /**
      * Create the game and initialise its internal map.
@@ -186,6 +187,10 @@ public class Game
             case EAT:
                 eat();
                 break;
+                
+            case BACK:
+                back(command);
+                break;
 
             case QUIT:
                 wantToQuit = quit(command);
@@ -231,6 +236,7 @@ public class Game
             System.out.println("There is no door!");
         }
         else {
+            previousRoom = currentRoom;
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }
@@ -267,9 +273,37 @@ public class Game
         System.out.println(currentRoom.getLongDescription());
     }
     
+    /**
+     * Prints out a message saying that the player has eaten and is no
+     * longer hungry.
+     */
     private void eat()
     {
         System.out.println("You have eaten now and you are not hungry " +
         "any more.");
+    }
+    
+    private void back(Command command)
+    {
+        if(command.hasSecondWord())
+        {
+            System.out.println("Back what?");
+        }
+        else
+        {
+            if (previousRoom == null)
+            {
+                System.out.println("You have just started!");
+            }
+            else if (previousRoom == currentRoom)
+            {
+                System.out.println("You can only go back once.");
+            }
+            else
+            {
+                currentRoom = previousRoom;
+                System.out.println(currentRoom.getLongDescription());
+            }
+        }
     }
 }
