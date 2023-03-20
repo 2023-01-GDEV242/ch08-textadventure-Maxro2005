@@ -69,6 +69,10 @@ public class Player
         updateCarryCapacity(weightIncrease);
     }
     
+    /**
+     * Drops an item into the current room.
+     * @param itemString the identifying string of the item to be dropped.
+     */
     public void dropItem(String itemString)
     {
         Item item = null;

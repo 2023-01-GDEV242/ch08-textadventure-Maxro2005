@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 
 /**
- *  This class is the main class of my text adventure game. For now,
- *  players can simply walk around and explore the RVCC campus.
+ *  This class is the main class of my text adventure game. Players can
+ *  walk around and explore RVCCs campus, collect items, and talk to some
+ *  NPCs.
  * 
  *  To play this game, create an instance of this class and call the "play"
  *  method.
@@ -324,6 +325,9 @@ public class Game
         }
     }
     
+    /**
+     * Main method so that program can be run outside of BlueJ.
+     */
     public static void main(String[] args)
     {
         Game game = new Game();

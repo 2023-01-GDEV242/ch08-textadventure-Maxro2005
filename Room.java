@@ -141,6 +141,10 @@ public class Room
         return itemMap.get(itemString);
     }
     
+    /**
+     * Removes an item from the room.
+     * @param item the item to be removed.
+     */
     public void removeItem(Item item)
     {
         itemMap.remove(item.getString());

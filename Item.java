@@ -50,6 +50,11 @@ public class Item
         return "There is " + description + " (" + getString() + ").";
     }
     
+    /**
+     * Returns the string that identifies the item for take and drop
+     * commands.
+     * @return the identifying string.
+     */
     public String getString()
     {
         return itemString;
