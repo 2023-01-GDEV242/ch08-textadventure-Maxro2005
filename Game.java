@@ -18,6 +18,7 @@ public class Game
     private Parser parser;
     private Room currentRoom;
     private Room previousRoom;
+    private Player player;
         
     /**
      * Create the game and initialise its internal map.
@@ -156,6 +157,10 @@ public class Game
         westBuilding.addItem(computer);
         westBuilding.addItem(cheatSheet);
         workforceBldg.addItem(makeup);
+        
+        // create and initialize the player
+        player = new Player();
+        player.updateRoom(mainEntrance);
     }
 
     /**
@@ -271,6 +276,7 @@ public class Game
         else {
             previousRoom = currentRoom;
             currentRoom = nextRoom;
+            player.updateRoom(currentRoom);
             System.out.println(currentRoom.getLongDescription());
         }
     }
@@ -312,8 +318,8 @@ public class Game
      */
     private void eat()
     {
-        System.out.println("You have eaten now and you are not hungry " +
-        "any more.");
+        System.out.println("You have eaten and can now carry more items.");
+        player.updateCarryCapacity(25);
     }
     
     /**
@@ -338,6 +344,7 @@ public class Game
             else
             {
                 currentRoom = previousRoom;
+                player.updateRoom(currentRoom);
                 System.out.println(currentRoom.getLongDescription());
             }
         }
